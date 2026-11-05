@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ParchU · Emprendimientos de Montería</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#FFF9F0">
+  <meta name="description" content="Compra directo a los emprendimientos de Montería: comida, ropa, artesanías y más.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a class="logo" href="index.html" aria-label="ParchU, inicio"><img class="logo__icono" src="img/logo-192.png" alt="" width="40" height="40">Parch<span class="logo__u">U</span></a>
+      <nav class="cuenta" data-cuenta aria-label="Tu cuenta"></nav>
+    </div>
+    <div class="trenza" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="portada contenedor">
+      <h1 class="portada__titulo">Lo que se hace en <em>Montería</em>, en un solo lugar</h1>
+      <p class="portada__texto">Pide directo a los emprendimientos de tu ciudad: postres, comida, ropa, artesanías y mucho más.</p>
+
+      <form class="buscador" role="search" id="formBuscar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <label class="solo-lector" for="buscar">Buscar emprendimientos</label>
+        <input id="buscar" type="search" placeholder="Busca galletas, ropa, un barrio…" autocomplete="off">
+        <button class="boton boton--principal" type="submit">Buscar</button>
+      </form>
+    </section>
+
+    <section class="contenedor" aria-label="Categorías">
+      <div class="categorias" id="categorias"></div>
+    </section>
+
+    <section class="seccion contenedor" aria-labelledby="tituloTiendas">
+      <div class="seccion__cabecera">
+        <h2 class="seccion__titulo" id="tituloTiendas">Emprendimientos</h2>
+        <span class="seccion__conteo" id="conteo" aria-live="polite"></span>
+      </div>
+      <div class="tiendas" id="tiendas"></div>
+    </section>
+
+    <section class="contenedor" id="bloqueVender">
+      <div class="vender">
+        <div>
+          <h2>¿Tienes un emprendimiento?</h2>
+          <p>Abre tu tienda en ParchU gratis. Solo pagas el 8% cuando vendes.</p>
+        </div>
+        <a class="boton boton--mango" href="login.html?modo=registro" id="enlaceVender">Abrir mi tienda</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">ParchU, hecho en Montería.</div>
+  </footer>
+
+  <script type="module" src="js/inicio.js"></script>
+</body>
+</html>

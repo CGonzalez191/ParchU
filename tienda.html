@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tienda · ParchU</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#FFF9F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pagina-tienda">
+
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a class="logo" href="index.html" aria-label="ParchU, inicio"><img class="logo__icono" src="img/logo-192.png" alt="" width="40" height="40">Parch<span class="logo__u">U</span></a>
+      <nav class="cuenta" data-cuenta aria-label="Tu cuenta"></nav>
+    </div>
+    <div class="trenza" aria-hidden="true"></div>
+  </header>
+
+  <main class="contenedor" id="contenido">
+    <!-- Mientras carga -->
+    <div class="perfil-tienda esqueleto" aria-hidden="true">
+      <div class="perfil-tienda__portada tienda__imagen"></div>
+    </div>
+  </main>
+
+  <!-- Barra del carrito en celular -->
+  <button class="barra-carrito oculto" type="button" id="abrirCarrito">
+    <span><span id="barraCantidad">0</span> productos</span>
+    <strong>Ver pedido <span id="barraTotal"></span></strong>
+  </button>
+
+  <!-- Pedido confirmado -->
+  <dialog class="modal" id="modalListo" aria-labelledby="listoTitulo">
+    <div class="modal__cuerpo">
+      <div class="modal__icono" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+      </div>
+      <h2 id="listoTitulo">Pedido enviado</h2>
+      <p id="listoTexto"></p>
+      <div class="modal__codigo">
+        <span>Código del pedido</span>
+        <strong id="listoCodigo"></strong>
+      </div>
+      <div class="modal__acciones">
+        <a class="boton boton--principal boton--ancho" href="mis-pedidos.html">Ver mis pedidos</a>
+        <button class="boton boton--suave boton--ancho" type="button" id="cerrarListo">Seguir en la tienda</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="js/tienda.js"></script>
+</body>
+</html>

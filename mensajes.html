@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mensajes · ParchU</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#FFF9F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pagina-chat">
+
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a class="logo" href="index.html" aria-label="ParchU, inicio"><img class="logo__icono" src="img/logo-192.png" alt="" width="40" height="40">Parch<span class="logo__u">U</span></a>
+      <nav class="cuenta" data-cuenta aria-label="Tu cuenta"></nav>
+    </div>
+    <div class="trenza" aria-hidden="true"></div>
+  </header>
+
+  <main class="contenedor chat" id="chat">
+    <aside class="chat__lista" aria-label="Conversaciones">
+      <h1 class="chat__titulo">Mensajes</h1>
+      <ul id="conversaciones" class="conversaciones">
+        <li class="cargando">Cargando…</li>
+      </ul>
+    </aside>
+
+    <section class="chat__conversacion" id="conversacion" aria-live="polite">
+      <div class="chat__vacio">
+        <h2>Elige una conversación</h2>
+        <p>Aquí hablas con las tiendas y sus clientes sobre pedidos, pagos y entregas.</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/mensajes.js"></script>
+</body>
+</html>

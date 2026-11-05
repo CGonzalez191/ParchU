@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administración · ParchU</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#FFF9F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a class="logo" href="index.html" aria-label="ParchU, inicio"><img class="logo__icono" src="img/logo-192.png" alt="" width="40" height="40">Parch<span class="logo__u">U</span></a>
+      <nav class="cuenta" data-cuenta aria-label="Tu cuenta"></nav>
+    </div>
+    <div class="trenza" aria-hidden="true"></div>
+  </header>
+
+  <main class="contenedor panel">
+    <div class="panel__intro">
+      <h1>Administración</h1>
+      <p>Revisa emprendimientos, sigue los pedidos y atiende los reportes de ParchU.</p>
+    </div>
+
+    <div class="estadisticas" id="estadisticas"></div>
+
+    <div class="pestanas-panel" role="tablist" aria-label="Secciones de administración">
+      <button type="button" role="tab" data-pestana="solicitudes">Solicitudes <span class="contador-pestana oculto" id="cuentaSolicitudes"></span></button>
+      <button type="button" role="tab" data-pestana="tiendas">Tiendas</button>
+      <button type="button" role="tab" data-pestana="pedidos">Pedidos</button>
+      <button type="button" role="tab" data-pestana="reportes">Reportes <span class="contador-pestana oculto" id="cuentaReportes"></span></button>
+      <button type="button" role="tab" data-pestana="ajustes">Ajustes</button>
+    </div>
+
+    <section data-panel="solicitudes">
+      <div id="listaSolicitudes" class="solicitudes"></div>
+    </section>
+
+    <section data-panel="tiendas" class="oculto">
+      <div class="filtros" role="group" aria-label="Filtrar tiendas" id="filtroTiendas"></div>
+      <div class="tabla-envoltura">
+        <table class="tabla" id="tablaTiendas"></table>
+      </div>
+    </section>
+
+    <section data-panel="pedidos" class="oculto">
+      <div class="tabla-envoltura">
+        <table class="tabla" id="tablaPedidos"></table>
+      </div>
+    </section>
+
+    <section data-panel="reportes" class="oculto">
+      <div id="listaReportes"></div>
+    </section>
+
+    <section data-panel="ajustes" class="oculto">
+      <form class="formulario ajustes" id="formAjustes" novalidate>
+        <div class="campo">
+          <label for="comision">Comisión de ParchU (%)</label>
+          <input id="comision" type="number" min="0" max="50" step="0.5" required>
+          <span class="campo__ayuda">Se aplica a los pedidos nuevos, sobre el valor de los productos (no del domicilio).</span>
+        </div>
+        <div class="campo">
+          <label for="retraso">Minutos de retraso para poder cancelar</label>
+          <input id="retraso" type="number" min="5" step="5" required>
+          <span class="campo__ayuda">Tiempo después de la hora de entrega prometida en el que el cliente puede cancelar.</span>
+        </div>
+        <div>
+          <button class="boton boton--principal" type="submit">Guardar ajustes</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

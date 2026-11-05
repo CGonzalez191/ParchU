@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi tienda · ParchU</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#FFF9F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a class="logo" href="index.html" aria-label="ParchU, inicio"><img class="logo__icono" src="img/logo-192.png" alt="" width="40" height="40">Parch<span class="logo__u">U</span></a>
+      <nav class="cuenta" data-cuenta aria-label="Tu cuenta"></nav>
+    </div>
+    <div class="trenza" aria-hidden="true"></div>
+  </header>
+
+  <main class="contenedor panel">
+
+    <p class="cargando" id="cargando">Cargando tu tienda…</p>
+
+    <!-- Aún no tiene tienda -->
+    <section class="oculto" id="sinTienda">
+      <div class="panel__intro">
+        <h1>Abre tu tienda en ParchU</h1>
+        <p>Llena estos datos y administración revisará tu emprendimiento. Mientras tanto puedes ir subiendo tus productos.</p>
+      </div>
+      <form class="formulario-tienda" id="formCrear" novalidate></form>
+    </section>
+
+    <!-- Ya tiene tienda -->
+    <section class="oculto" id="conTienda">
+      <div class="panel__cabecera" id="cabecera"></div>
+      <div id="avisoEstado"></div>
+      <div class="estadisticas" id="estadisticas"></div>
+
+      <div class="pestanas-panel" role="tablist" aria-label="Secciones de tu tienda">
+        <button type="button" role="tab" data-pestana="pedidos">Pedidos <span class="contador-pestana oculto" id="cuentaPedidos"></span></button>
+        <button type="button" role="tab" data-pestana="productos">Productos</button>
+        <button type="button" role="tab" data-pestana="tienda">Datos de la tienda</button>
+        <button type="button" role="tab" data-pestana="resenas">Reseñas</button>
+      </div>
+
+      <section data-panel="pedidos">
+        <div class="filtros" role="group" aria-label="Filtrar pedidos">
+          <button class="chip" type="button" data-filtro="activos" aria-pressed="true">En curso</button>
+          <button class="chip" type="button" data-filtro="historial" aria-pressed="false">Historial</button>
+        </div>
+        <div class="lista-pedidos" id="listaPedidos"></div>
+      </section>
+
+      <section data-panel="productos" class="oculto">
+        <div class="panel__acciones">
+          <p class="panel__nota" id="notaProductos"></p>
+          <button class="boton boton--principal" type="button" id="nuevoProducto">Agregar producto</button>
+        </div>
+        <div class="lista-productos" id="listaProductos"></div>
+      </section>
+
+      <section data-panel="tienda" class="oculto">
+        <form class="formulario-tienda" id="formEditar" novalidate></form>
+      </section>
+
+      <section data-panel="resenas" class="oculto">
+        <div id="listaResenas"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Crear / editar producto -->
+  <dialog class="modal modal--ancho" id="modalProducto" aria-labelledby="tituloProducto">
+    <form class="modal__cuerpo modal__cuerpo--izq formulario" id="formProducto" novalidate>
+      <h2 id="tituloProducto">Nuevo producto</h2>
+      <div class="alerta alerta--error oculto" data-mensaje role="alert"></div>
+
+      <div class="producto-form">
+        <label class="subir-foto" for="prodFoto">
+          <span class="subir-foto__vista" id="prodVista"><span>Agregar foto</span></span>
+          <input id="prodFoto" type="file" accept="image/jpeg,image/png,image/webp" class="solo-lector">
+        </label>
+        <div class="formulario">
+          <div class="campo">
+            <label for="prodNombre">Nombre</label>
+            <input id="prodNombre" type="text" maxlength="80" required placeholder="Galletas de avena x6">
+          </div>
+          <div class="campo">
+            <label for="prodPrecio">Precio (pesos)</label>
+            <input id="prodPrecio" type="number" min="0" step="100" inputmode="numeric" required placeholder="8000">
+          </div>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="prodDescripcion">Descripción</label>
+        <textarea id="prodDescripcion" rows="3" maxlength="300" placeholder="Qué trae, tamaño, sabores…"></textarea>
+      </div>
+
+      <div class="campo">
+        <label for="prodStock">Unidades disponibles</label>
+        <input id="prodStock" type="number" min="0" step="1" inputmode="numeric" placeholder="Déjalo vacío si no llevas la cuenta">
+        <span class="campo__ayuda">Si pones un número, se descuenta con cada venta y se marca agotado al llegar a 0.</span>
+      </div>
+
+      <label class="interruptor">
+        <input id="prodDisponible" type="checkbox" checked>
+        <span class="interruptor__pista" aria-hidden="true"></span>
+        <span>Disponible para la venta</span>
+      </label>
+
+      <div class="modal__botones">
+        <button class="boton boton--suave" type="button" data-cerrar>Cancelar</button>
+        <button class="boton boton--principal" type="submit">Guardar producto</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/vendedor.js"></script>
+</body>
+</html>

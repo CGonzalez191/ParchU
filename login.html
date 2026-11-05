@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar · ParchU</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#FFF9F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="acceso">
+
+    <aside class="acceso__lado">
+      <a class="logo" href="index.html" aria-label="ParchU, inicio"><img class="logo__icono" src="img/logo-192.png" alt="" width="40" height="40">Parch<span class="logo__u">U</span></a>
+      <div>
+        <h1>Compra y vende en tu ciudad</h1>
+        <p>Una sola cuenta para pedirle a los emprendimientos de Montería o abrir el tuyo.</p>
+      </div>
+      <div class="trenza" aria-hidden="true"></div>
+    </aside>
+
+    <main class="acceso__formulario">
+      <div class="acceso__caja">
+
+        <div class="pestanas" role="tablist" aria-label="Elige una opción">
+          <button class="pestana" type="button" role="tab" id="tabEntrar"
+                  aria-selected="true" aria-controls="formEntrar">Iniciar sesión</button>
+          <button class="pestana" type="button" role="tab" id="tabRegistro"
+                  aria-selected="false" aria-controls="formRegistro">Crear cuenta</button>
+        </div>
+
+        <!-- Iniciar sesión -->
+        <form class="formulario" id="formEntrar" role="tabpanel" aria-labelledby="tabEntrar" novalidate>
+          <h2>Hola de nuevo</h2>
+          <p class="formulario__sub">Entra con tu correo y contraseña.</p>
+
+          <div class="alerta alerta--error oculto" data-mensaje role="alert"></div>
+
+          <div class="campo">
+            <label for="entrarCorreo">Correo</label>
+            <input id="entrarCorreo" name="correo" type="email" autocomplete="email" required>
+          </div>
+          <div class="campo">
+            <label for="entrarClave">Contraseña</label>
+            <input id="entrarClave" name="clave" type="password" autocomplete="current-password" required>
+          </div>
+
+          <button class="boton boton--principal boton--ancho" type="submit">Iniciar sesión</button>
+        </form>
+
+        <!-- Crear cuenta -->
+        <form class="formulario oculto" id="formRegistro" role="tabpanel" aria-labelledby="tabRegistro" novalidate>
+          <h2>Crea tu cuenta</h2>
+          <p class="formulario__sub">Con esta cuenta puedes comprar y, si quieres, abrir tu tienda.</p>
+
+          <div class="alerta alerta--error oculto" data-mensaje role="alert"></div>
+
+          <div class="campo">
+            <label for="regNombre">Nombre</label>
+            <input id="regNombre" name="nombre" type="text" autocomplete="name" required>
+          </div>
+          <div class="campo">
+            <label for="regTelefono">Celular</label>
+            <input id="regTelefono" name="telefono" type="tel" autocomplete="tel" inputmode="numeric" placeholder="300 123 4567">
+            <span class="campo__ayuda">Para que los vendedores puedan contactarte por tus pedidos.</span>
+          </div>
+          <div class="campo">
+            <label for="regCorreo">Correo</label>
+            <input id="regCorreo" name="correo" type="email" autocomplete="email" required>
+          </div>
+          <div class="campo">
+            <label for="regClave">Contraseña</label>
+            <input id="regClave" name="clave" type="password" autocomplete="new-password" minlength="6" required>
+            <span class="campo__ayuda">Mínimo 6 caracteres.</span>
+          </div>
+
+          <button class="boton boton--principal boton--ancho" type="submit">Crear cuenta</button>
+        </form>
+
+        <a class="volver" href="index.html">Volver a explorar sin cuenta</a>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis pedidos · ParchU</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#FFF9F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a class="logo" href="index.html" aria-label="ParchU, inicio"><img class="logo__icono" src="img/logo-192.png" alt="" width="40" height="40">Parch<span class="logo__u">U</span></a>
+      <nav class="cuenta" data-cuenta aria-label="Tu cuenta"></nav>
+    </div>
+    <div class="trenza" aria-hidden="true"></div>
+  </header>
+
+  <main class="contenedor panel panel--estrecho">
+    <div class="panel__intro">
+      <h1>Mis pedidos</h1>
+      <p>El estado se actualiza solo cuando el vendedor avanza tu pedido.</p>
+    </div>
+    <div class="lista-pedidos" id="lista">
+      <p class="cargando">Cargando tus pedidos…</p>
+    </div>
+  </main>
+
+  <!-- Calificar -->
+  <dialog class="modal" id="modalCalificar" aria-labelledby="tituloCalificar">
+    <form class="modal__cuerpo modal__cuerpo--izq" id="formCalificar">
+      <h2 id="tituloCalificar">Califica tu pedido</h2>
+      <p id="textoCalificar"></p>
+      <fieldset class="estrellas" aria-label="Calificación">
+        <legend class="solo-lector">Elige de 1 a 5 estrellas</legend>
+        <div class="estrellas__grupo" id="estrellas"></div>
+      </fieldset>
+      <div class="campo">
+        <label for="comentario">Cuéntale a otros cómo te fue <span class="campo__ayuda">(opcional)</span></label>
+        <textarea id="comentario" rows="3" maxlength="400" placeholder="Llegó a tiempo, todo delicioso…"></textarea>
+      </div>
+      <div class="alerta alerta--error oculto" id="errorCalificar" role="alert"></div>
+      <div class="modal__botones">
+        <button class="boton boton--suave" type="button" data-cerrar>Ahora no</button>
+        <button class="boton boton--principal" type="submit">Publicar reseña</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/mis-pedidos.js"></script>
+</body>
+</html>
