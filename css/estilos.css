@@ -1,5 +1,5 @@
 /* =========================================================
-   PARCHU · Estilos generales
+   ParchU · Estilos generales
    Paleta cálida de tarde monteriana: naranja atardecer sobre
    papel crema, amarillo mango de acento y trazos a mano
    (estética de boceto). La trenza del sombrero vueltiao sigue
@@ -111,7 +111,7 @@ a { color: var(--sinu); }
 
 /* ---------------------------------------------------------
    Trenza: franja en zigzag inspirada en el sombrero vueltiao.
-   Es el sello visual de Parchu; se usa una sola vez por página.
+   Es el sello visual de ParchU; se usa una sola vez por página.
    --------------------------------------------------------- */
 .trenza {
   height: 14px;
@@ -1707,6 +1707,22 @@ a { text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .acceso__lado { border-right: 2.5px solid var(--trazo); }
 .acceso__lado h1 { font-weight: 700; }
 .acceso__lado .trenza { --tinta: var(--sinu-oscuro); background-color: var(--sinu); border: 0; }
+/* Logo grande sobre un plato de papel para que no se pierda en el fondo naranja */
+.acceso__sello {
+  display: block;
+  width: clamp(140px, 15vw, 200px);
+  height: auto;
+  margin-bottom: 28px;
+  padding: 10px;
+  background: var(--papel);
+  border: 2.5px solid var(--trazo);
+  border-radius: 50%;
+  box-shadow: var(--sombra);
+  rotate: -6deg;
+}
+@media (max-width: 760px) {
+  .acceso__sello { width: 96px; padding: 6px; margin-bottom: 18px; }
+}
 .pestanas { background: var(--superficie); border: var(--borde); border-radius: var(--radio-boton); }
 .pestana { border-radius: var(--radio-boton); font-family: var(--letra-titulo); font-size: 1.05rem; border: 2px solid transparent; }
 .pestana[aria-selected="true"] { background: var(--papel); border-color: var(--trazo); box-shadow: 2px 2px 0 var(--trazo); }
@@ -2059,4 +2075,72 @@ main { animation: aparecer-sube .45s var(--curva) both; }
   @view-transition { navigation: none; }
   .chip:hover, .producto:hover, .solicitud:hover, .cifra:hover { translate: none; }
   .tienda:hover .tienda__logo { rotate: none; }
+}
+
+/* =========================================================
+   PANTALLA DE CARGA
+   Sale la primera vez que se abre ParchU en la pestaña (js/carga.js).
+   El fondo naranja sube como un telón y deja ver la página.
+   ========================================================= */
+html.cargando::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--sinu);
+}
+
+.carga {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: var(--sinu);
+  color: #fff;
+  text-align: center;
+}
+.carga__centro { display: grid; justify-items: center; padding: 20px; }
+.carga__logo {
+  width: clamp(120px, 30vw, 170px);
+  height: auto;
+  padding: 10px;
+  background: var(--papel);
+  border: 2.5px solid var(--trazo);
+  border-radius: 50%;
+  box-shadow: var(--sombra-lg);
+  animation: carga-logo .7s var(--rebote, ease-out) both,
+             carga-flota 2.4s .7s ease-in-out infinite;
+}
+.carga__nombre {
+  margin: 18px 0 0;
+  font: 700 clamp(2.4rem, 9vw, 3.4rem)/1 var(--letra-titulo);
+  animation: aparecer-sube .5s .35s var(--curva, ease-out) both;
+}
+.carga__nombre span { color: var(--mango); }
+.carga__lema {
+  margin: 10px 0 0;
+  font-size: var(--t-md);
+  opacity: .9;
+  animation: aparecer-sube .5s .5s var(--curva, ease-out) both;
+}
+.carga .trenza {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  --tinta: var(--sinu-oscuro);
+  background-color: var(--sinu);
+}
+
+/* El telón sube y la página aparece debajo */
+.carga--sale { animation: carga-telon .8s cubic-bezier(.7, 0, .2, 1) forwards; }
+.carga--sale .carga__centro { animation: desvanecer .3s ease forwards; }
+body.revelando > :not(.carga) { animation: carga-revela .9s .15s var(--curva, ease-out) both; }
+
+@keyframes carga-logo   { from { opacity: 0; scale: .4; rotate: -25deg; } to { rotate: -6deg; } }
+@keyframes carga-flota  { 0%, 100% { translate: 0 0; rotate: -6deg; } 50% { translate: 0 -8px; rotate: 4deg; } }
+@keyframes carga-telon  { to { translate: 0 -100%; } }
+@keyframes carga-revela { from { opacity: 0; translate: 0 40px; scale: .98; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .carga__logo, .carga__nombre, .carga__lema { animation: none; }
 }
